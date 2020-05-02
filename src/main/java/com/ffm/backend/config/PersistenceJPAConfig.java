@@ -1,4 +1,4 @@
-package com.piasecki.adach.forestfiremonitorbackend.config;
+package com.ffm.backend.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;

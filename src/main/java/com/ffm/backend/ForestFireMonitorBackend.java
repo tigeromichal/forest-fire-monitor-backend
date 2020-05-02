@@ -1,13 +1,13 @@
-package com.piasecki.adach.forestfiremonitorbackend;
+package com.ffm.backend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ForestFireMonitorBackendApplication {
+public class ForestFireMonitorBackend {
 
     public static void main(String[] args) {
-        SpringApplication.run(ForestFireMonitorBackendApplication.class, args);
+        SpringApplication.run(ForestFireMonitorBackend.class, args);
     }
 
 }

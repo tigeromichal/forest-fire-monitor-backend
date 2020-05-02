@@ -5,17 +5,19 @@ spring:
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/forest_fire_monitor_db
-    username: admin
-    password: admin
+    username: ffm_admin
+    password: ffm_admin
+    initialization-mode: always
   jpa:
+    database: POSTGRESQL
+    database-platform: org.hibernate.dialect.PostgreSQL95Dialect
+    open-in-view: false
     hibernate:
       ddl-auto: create
-    show-sql: true
-    database: POSTGRESQL
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-    open-in-view: false
-    generate-ddl: false
-    properties.hibernate.temp.use_jdbc_metadata_defaults: false
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
 logging:
   level:
     org.springframework: INFO
