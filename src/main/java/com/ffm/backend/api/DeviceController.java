@@ -16,7 +16,7 @@ public class DeviceController {
     private final DeviceService deviceService;
 
     @PostMapping("/devices")
-    public Device saveOrUpdate(@RequestBody @Valid Device device) {
+    public Device saveOrUpdateDevice(@RequestBody @Valid Device device) {
         return deviceService.saveOrUpdate(device);
     }
 }

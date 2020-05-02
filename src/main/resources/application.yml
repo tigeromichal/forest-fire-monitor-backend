@@ -21,5 +21,4 @@ spring:
 logging:
   level:
     org.springframework: INFO
-    org.springframework.security: DEBUG
     org.hibernate: INFO
