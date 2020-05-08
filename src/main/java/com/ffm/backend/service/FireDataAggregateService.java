@@ -1,10 +1,13 @@
 package com.ffm.backend.service;
 
 import com.ffm.backend.data.CurrentFireProvider;
+import com.ffm.backend.data.FireHazardDataProvider;
 import com.ffm.backend.data.model.input.QueryArea;
 import com.ffm.backend.data.model.output.CurrentFire;
 import com.ffm.backend.data.model.output.FireData;
+import com.ffm.backend.data.model.output.FireHazardData;
 import com.ffm.backend.data.nasa.NasaCurrentFireProvider;
+import com.ffm.backend.data.openweather.OpenWeatherFireHazardDataProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,10 +23,12 @@ public class FireDataAggregateService {
         new NasaCurrentFireProvider()
     );
 
+    private final FireHazardDataProvider fireHazardDataProvider = new OpenWeatherFireHazardDataProvider();
+
     public FireData getAggregatedData(QueryArea queryArea) {
         List<CurrentFire> currentFires = collectCurrentFires(queryArea);
-        // TODO implement and set hazard data
-        return new FireData(currentFires, null);
+        FireHazardData fireHazardData = collectFireHazardData(queryArea);
+        return new FireData(currentFires, null);// TODO replace null with fireHazardData
     }
 
     private List<CurrentFire> collectCurrentFires(QueryArea queryArea) {
@@ -31,5 +36,9 @@ public class FireDataAggregateService {
             .map(provider -> provider.getCurrentFires(queryArea))
             .flatMap(Collection::stream)
             .collect(Collectors.toList());
+    }
+
+    private FireHazardData collectFireHazardData(QueryArea queryArea) {
+        return fireHazardDataProvider.getFireHazardData(queryArea);
     }
 }

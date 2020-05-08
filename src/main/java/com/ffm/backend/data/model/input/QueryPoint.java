@@ -16,6 +16,10 @@ public class QueryPoint {
     private final BigDecimal latitude;
     private final BigDecimal longitude;
 
+    public static QueryPoint fromJtsCoordinate(Coordinate coordinate) {
+        return new QueryPoint(BigDecimal.valueOf(coordinate.getY()), BigDecimal.valueOf(coordinate.getX()));
+    }
+
     public Coordinate toJtsCoordinate() {
         return new CoordinateXY(longitude.doubleValue(), latitude.doubleValue());
     }
