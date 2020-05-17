@@ -16,6 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.io.IOException;
 import java.net.URL;
 import java.util.AbstractMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
@@ -46,7 +47,7 @@ public abstract class AbstractOpenWeatherFireHazardProvider<T extends AbstractOp
     }
 
     @Override
-    public FireHazardData getFireHazardData(QueryArea queryArea) {
+    public List<FireHazardData> getFireHazardData(QueryArea queryArea) {
         QueryPoint centroid = QueryPoint.fromJtsCoordinate(queryArea.getPolygon().getCentroid().getCoordinate());
         Map<QueryPoint, T> rows = Stream.concat(Stream.of(centroid), queryArea.getQueryPoints().stream())
                 .distinct()

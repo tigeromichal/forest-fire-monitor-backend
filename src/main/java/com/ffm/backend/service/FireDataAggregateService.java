@@ -27,7 +27,7 @@ public class FireDataAggregateService {
 
     public FireData getAggregatedData(QueryArea queryArea) {
         List<CurrentFire> currentFires = collectCurrentFires(queryArea);
-        FireHazardData fireHazardData = collectFireHazardData(queryArea);
+        List<FireHazardData> fireHazardData = collectFireHazardData(queryArea);
         return new FireData(currentFires, fireHazardData);
     }
 
@@ -38,7 +38,7 @@ public class FireDataAggregateService {
             .collect(Collectors.toList());
     }
 
-    private FireHazardData collectFireHazardData(QueryArea queryArea) {
+    private List<FireHazardData> collectFireHazardData(QueryArea queryArea) {
         return fireHazardDataProvider.getFireHazardData(queryArea);
     }
 }

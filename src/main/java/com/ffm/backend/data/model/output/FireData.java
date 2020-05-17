@@ -12,5 +12,5 @@ import java.util.List;
 public class FireData {
 
     private final List<CurrentFire> currentFires;
-    private final FireHazardData hazard;
+    private final List<FireHazardData> hazard;
 }

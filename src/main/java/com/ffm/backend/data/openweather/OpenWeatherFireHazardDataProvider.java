@@ -14,9 +14,9 @@ public class OpenWeatherFireHazardDataProvider implements FireHazardDataProvider
     );
 
     @Override
-    public FireHazardData getFireHazardData(QueryArea queryArea) {
+    public List<FireHazardData> getFireHazardData(QueryArea queryArea) {
         return openWeatherFireHazardDataProviders.stream()
                 .map(provider -> provider.getFireHazardData(queryArea))
-                .findFirst().get();
+                .findFirst().orElseThrow();
     }
 }

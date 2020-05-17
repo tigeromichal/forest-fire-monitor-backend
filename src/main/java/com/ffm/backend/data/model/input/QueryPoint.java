@@ -3,12 +3,14 @@ package com.ffm.backend.data.model.input;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.CoordinateXY;
 
 import java.math.BigDecimal;
 
 @Getter
+@Setter
 @RequiredArgsConstructor
 @EqualsAndHashCode
 public class QueryPoint {

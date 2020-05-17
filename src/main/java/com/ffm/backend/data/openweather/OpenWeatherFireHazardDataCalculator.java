@@ -4,18 +4,16 @@ import com.ffm.backend.data.model.input.QueryPoint;
 import com.ffm.backend.data.model.output.FireHazardData;
 import com.ffm.backend.data.openweather.model.AbstractOpenWeatherResponse;
 
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 public class OpenWeatherFireHazardDataCalculator {
 
-    public FireHazardData calculate(Map<QueryPoint, ? extends AbstractOpenWeatherResponse> openWeatherResponses) {
-        Map<QueryPoint, Float> hazard = openWeatherResponses.entrySet().stream()
-                .collect(Collectors.toMap(
-                        e -> e.getKey(),
-                        e -> hazard(e.getValue())
-                ));
-        return new FireHazardData(hazard);
+    public List<FireHazardData> calculate(Map<QueryPoint, ? extends AbstractOpenWeatherResponse> openWeatherResponses) {
+        return openWeatherResponses.entrySet().stream()
+                .map(e -> new FireHazardData(e.getKey(), hazard(e.getValue())))
+                .collect(Collectors.toList());
     }
 
     private Float hazard(AbstractOpenWeatherResponse openWeatherResponse) {
