@@ -28,7 +28,7 @@ public class FireDataAggregateService {
     public FireData getAggregatedData(QueryArea queryArea) {
         List<CurrentFire> currentFires = collectCurrentFires(queryArea);
         FireHazardData fireHazardData = collectFireHazardData(queryArea);
-        return new FireData(currentFires, null);// TODO replace null with fireHazardData
+        return new FireData(currentFires, fireHazardData);
     }
 
     private List<CurrentFire> collectCurrentFires(QueryArea queryArea) {

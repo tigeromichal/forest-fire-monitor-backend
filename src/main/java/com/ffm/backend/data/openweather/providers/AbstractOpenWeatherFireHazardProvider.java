@@ -15,9 +15,12 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.*;
+import java.util.AbstractMap;
+import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Slf4j
 public abstract class AbstractOpenWeatherFireHazardProvider<T extends AbstractOpenWeatherResponse> implements FireHazardDataProvider {
@@ -44,12 +47,10 @@ public abstract class AbstractOpenWeatherFireHazardProvider<T extends AbstractOp
 
     @Override
     public FireHazardData getFireHazardData(QueryArea queryArea) {
-        Map<QueryPoint, T> rows = queryArea.getQueryPoints().stream()
-                .map(queryPoint -> {
-                    QueryPoint centroid = QueryPoint.fromJtsCoordinate(queryArea.getPolygon().getCentroid().getCoordinate());
-                    return new AbstractMap.SimpleEntry<>(centroid, fetchRow(centroid));
-                })
+        QueryPoint centroid = QueryPoint.fromJtsCoordinate(queryArea.getPolygon().getCentroid().getCoordinate());
+        Map<QueryPoint, T> rows = Stream.concat(Stream.of(centroid), queryArea.getQueryPoints().stream())
                 .distinct()
+                .map(queryPoint -> new AbstractMap.SimpleEntry<>(queryPoint, fetchRow(queryPoint)))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
         return fireHazardDataCalculator.calculate(rows);
     }

@@ -9,5 +9,4 @@ public class ForestFireMonitorBackend {
     public static void main(String[] args) {
         SpringApplication.run(ForestFireMonitorBackend.class, args);
     }
-
 }
