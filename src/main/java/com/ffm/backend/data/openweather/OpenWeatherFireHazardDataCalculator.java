@@ -3,12 +3,15 @@ package com.ffm.backend.data.openweather;
 import com.ffm.backend.data.model.input.QueryPoint;
 import com.ffm.backend.data.model.output.FireHazardData;
 import com.ffm.backend.data.openweather.model.AbstractOpenWeatherResponse;
+import com.ffm.backend.service.FireHazardCalculator;
 
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 public class OpenWeatherFireHazardDataCalculator {
+
+    private final FireHazardCalculator fireHazardCalculator = new FireHazardCalculator();
 
     public List<FireHazardData> calculate(Map<QueryPoint, ? extends AbstractOpenWeatherResponse> openWeatherResponses) {
         return openWeatherResponses.entrySet().stream()
@@ -17,9 +20,8 @@ public class OpenWeatherFireHazardDataCalculator {
     }
 
     private Float hazard(AbstractOpenWeatherResponse openWeatherResponse) {
-        openWeatherResponse.getMain().getTemp();
-        openWeatherResponse.getMain().getTemp_max();
-        openWeatherResponse.getMain().getHumidity();
-        return (float) 0.5;
+        double tempMax = openWeatherResponse.getMain().getTemp_max();
+        int humidity = openWeatherResponse.getMain().getHumidity();
+        return fireHazardCalculator.calculate(tempMax, humidity);
     }
 }

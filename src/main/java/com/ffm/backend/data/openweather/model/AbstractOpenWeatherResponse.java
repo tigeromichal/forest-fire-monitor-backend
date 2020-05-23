@@ -1,6 +1,7 @@
 package com.ffm.backend.data.openweather.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,7 +14,7 @@ import java.util.Map;
 @Getter
 @Setter
 @JsonPropertyOrder({
-        "coord", "weather", "base", "main", "visibility", "wind", "clouds", "dt", "sys", "timezone",
+        "coord", "weather", "base", "main", "visibility", "wind", "rain", "clouds", "dt", "sys", "timezone",
         "id", "name", "cod"
 })
 public abstract class AbstractOpenWeatherResponse {
@@ -24,7 +25,7 @@ public abstract class AbstractOpenWeatherResponse {
     private Main main;
     private int visibility;
     private Wind wind;
-    @JsonIgnore
+    @JsonProperty
     private Rain rain;
     private Clouds clouds;
     private String dt;
