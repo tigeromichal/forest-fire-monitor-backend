@@ -67,6 +67,7 @@ public abstract class AbstractOpenWeatherResponse {
     public static class Wind {
         private double speed;
         private double deg;
+        private String gust;
     }
 
     @Getter
