@@ -31,6 +31,7 @@ public abstract class AbstractOpenWeatherResponse {
 
     @Getter
     @Setter
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Coord {
         private String lon;
         private String lat;
@@ -38,6 +39,7 @@ public abstract class AbstractOpenWeatherResponse {
 
     @Getter
     @Setter
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Weather {
         private String id;
         private String main;
@@ -47,6 +49,7 @@ public abstract class AbstractOpenWeatherResponse {
 
     @Getter
     @Setter
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Main {
         private double temp;
         private double feels_like;
@@ -58,6 +61,7 @@ public abstract class AbstractOpenWeatherResponse {
 
     @Getter
     @Setter
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Wind {
         private double speed;
         private double deg;
@@ -66,12 +70,14 @@ public abstract class AbstractOpenWeatherResponse {
 
     @Getter
     @Setter
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Clouds {
         private int all;
     }
 
     @Getter
     @Setter
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Sys {
         private int type;
         private String id;
@@ -83,6 +89,7 @@ public abstract class AbstractOpenWeatherResponse {
 
     @Getter
     @Setter
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Rain {
         private Map<String, String> values = new HashMap<>();
     }
