@@ -3,6 +3,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <repositories>
+        <repository>
+            <id>osgeo</id>
+            <name>osgeo</name>
+            <url>https://repo.osgeo.org/repository/release/</url>
+        </repository>
+    </repositories>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -18,9 +26,11 @@
         <java.version>11</java.version>
         <swagger.version>2.9.2</swagger.version>
         <jts.version>1.16.1</jts.version>
+        <gt-main.version>23.0</gt-main.version>
         <jackson.version>2.11.0</jackson.version>
         <junit.version>5.6.2</junit.version>
         <guava.version>29.0-jre</guava.version>
+        <firebase-admin.version>6.13.0</firebase-admin.version>
     </properties>
 
     <dependencies>
@@ -64,6 +74,13 @@
             <artifactId>jts-core</artifactId>
             <version>${jts.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.geotools/gt-main -->
+        <dependency>
+            <groupId>org.geotools</groupId>
+            <artifactId>gt-main</artifactId>
+            <version>${gt-main.version}</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-csv -->
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
@@ -76,18 +93,18 @@
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.firebase/firebase-admin -->
+        <dependency>
+            <groupId>com.google.firebase</groupId>
+            <artifactId>firebase-admin</artifactId>
+            <version>${firebase-admin.version}</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
+            <artifactId>junit-jupiter-engine</artifactId>
             <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.junit.platform/junit-platform-engine -->
-        <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-engine</artifactId>
-            <version>1.6.2</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

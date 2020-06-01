@@ -8,6 +8,8 @@
 - Create user 'ffm-admin' with password 'ffm-admin' 
 - Create empty database 'forest-fire-monitor-db' owned by 'ffm-admin'
 
+## How to configure firebase
+Set env variable `FIREBASE_CONFIG_PATH` to JSON file path containing firebase config.
 
 ## How to build
 Run `.\mvnw package` command.
