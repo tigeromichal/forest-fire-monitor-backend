@@ -18,7 +18,15 @@ spring:
       hibernate:
         temp:
           use_jdbc_metadata_defaults: false
+  redis:
+    host: localhost
+    port: 6379
 logging:
   level:
     org.springframework: INFO
     org.hibernate: INFO
+    com.ffm.backend.service.NotificationSenderService: DEBUG
+notifications:
+  diagonal-meters: 5000
+  interval-milliseconds: 300000
+  hazard-threshold: 50

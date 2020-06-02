@@ -8,6 +8,9 @@
 - Create user 'ffm-admin' with password 'ffm-admin' 
 - Create empty database 'forest-fire-monitor-db' owned by 'ffm-admin'
 
+## How to run redis
+Install docker and run command `docker run -d redis -p 6379:6379`.
+
 ## How to configure firebase
 Set env variable `FIREBASE_CONFIG_PATH` to JSON file path containing firebase config.
 
