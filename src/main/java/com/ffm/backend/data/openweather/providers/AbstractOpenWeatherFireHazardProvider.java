@@ -49,8 +49,7 @@ public abstract class AbstractOpenWeatherFireHazardProvider<T extends AbstractOp
     @Override
     public List<FireHazardData> getFireHazardData(QueryArea queryArea) {
         QueryPoint centroid = QueryPoint.fromJtsCoordinate(queryArea.getPolygon().getCentroid().getCoordinate());
-        Map<QueryPoint, T> rows = Stream.concat(Stream.of(centroid), queryArea.getQueryPoints().stream())
-                .distinct()
+        Map<QueryPoint, T> rows = Stream.of(centroid)
                 .map(queryPoint -> new AbstractMap.SimpleEntry<>(queryPoint, fetchRow(queryPoint)))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
         return fireHazardDataCalculator.calculate(rows);
