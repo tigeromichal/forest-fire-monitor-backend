@@ -101,8 +101,7 @@ public class NotificationSenderService {
 
     private Message prepareFirebaseMessage(Notification notification) {
         return Message.builder()
-            .setTopic("temacik")
-//            .setToken(notification.getFcmToken())
+            .setToken(notification.getId())
             .putData("fireCount", String.valueOf(notification.getFireData().getCurrentFires().size()))
             .putData("hazardCount", String.valueOf(notification.getFireData().getHazard().size()))
             .build();
