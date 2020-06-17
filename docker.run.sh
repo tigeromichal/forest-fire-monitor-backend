@@ -22,8 +22,8 @@ done
 
 if [[ ${clearEnv} == 1 ]]; then
   echo "Clearing docker env..."
-  docker stop ffm-server ffm-psql
-  docker rm ffm-server ffm-psql
+  docker stop ffm-server ffm-psql ffm-redis
+  docker rm ffm-server ffm-psql ffm-redis
   rm -r ~/.ffm-db
   mkdir ~/.ffm-db
 fi
