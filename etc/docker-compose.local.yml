@@ -1,0 +1,36 @@
+version: '3.7'
+
+services:
+  ffm-redis:
+    image: redis:6.0.5-alpine
+    container_name: ffm-redis
+    restart: always
+    ports:
+    - "6379:6379"
+
+  ffm-psql:
+    image: postgres:12.2-alpine
+    container_name: ffm-psql
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: ffm_admin
+      POSTGRES_USER: ffm_admin
+      POSTGRES_DB: forest_fire_monitor_db
+    volumes:
+      - ~/.ffm-db:/var/lib/postgresql/data:rw
+    ports:
+      - "5432:5432"
+
+  ffm-server:
+    image: ffm-server:latest
+    hostname: ffm-server
+    container_name: ffm-server
+    restart: always
+    environment:
+      FIREBASE_CONFIG_PATH: "~/trash/ffm-firebase-sdk.json"
+      DB_HOST: ffm-psql
+      LOG_LEVEL: DEBUG
+      DEBUG_PORT: 5015
+    ports:
+      - "8080:8080"
+      - "5015:5015"

@@ -20,5 +20,9 @@ Run `.\mvnw package` command.
 ## How to run
 Run `mvn spring-boot:run -Dspring-boot.run.profiles=dev` command.
 
+## Docker
+To build and run dockers run `./docker.run.sh` 
+
 ## API docs & Swagger UI
 API docs and Swagger UI are available under `http://localhost:8080/swagger-ui.html`
+

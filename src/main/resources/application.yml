@@ -1,5 +1,4 @@
 spring:
-  profiles: dev
   application:
     name: activity-recognition
   datasource:

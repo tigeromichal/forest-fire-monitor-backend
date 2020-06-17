@@ -30,6 +30,7 @@
         <jackson.version>2.11.0</jackson.version>
         <junit.version>5.6.2</junit.version>
         <guava.version>29.0-jre</guava.version>
+        <postgres.version>42.2.12</postgres.version>
         <firebase-admin.version>6.13.0</firebase-admin.version>
     </properties>
 
@@ -53,6 +54,8 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
+            <version>${postgres.version}</version>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
