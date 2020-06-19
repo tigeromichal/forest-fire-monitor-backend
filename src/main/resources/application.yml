@@ -28,8 +28,8 @@ logging:
     org.hibernate: DEBUG
     com.ffm.backend.service.NotificationSenderService: DEBUG
 notifications:
-  diagonal-meters: 900000
-  interval-milliseconds: 10000
+  diagonal-meters: 5000
+  interval-milliseconds: 300000
   hazard-threshold: 50
 
 
