@@ -23,6 +23,7 @@ public class FirebaseInitializer {
             FirebaseApp.initializeApp(firebaseOptions);
         } catch (Exception e) {
             log.warn("Unable to load firebase config. Notifications will not work!", e);
+            throw new RuntimeException("Notification load error");
         }
     }
 
@@ -34,6 +35,7 @@ public class FirebaseInitializer {
     private FirebaseOptions buildFirebaseOptions(FileInputStream firebaseConfig) throws IOException {
         return new FirebaseOptions.Builder()
             .setCredentials(GoogleCredentials.fromStream(firebaseConfig))
+            .setDatabaseUrl("https://forest-fire-monitor-3.firebaseio.com")
             .build();
     }
 }

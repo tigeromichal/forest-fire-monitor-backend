@@ -49,11 +49,11 @@ public class NotificationSenderService {
         }
 
         Notification notification = new Notification(device.getFcmToken(), fireData);
-        if (sameNotificationExists(notification)) {
-            log.debug(
-                "Notification for fcmToken: '{}' skipped because it is identical to last one.", device.getFcmToken());
-            return;
-        }
+//        if (sameNotificationExists(notification)) {
+//            log.debug(
+//                "Notification for fcmToken: '{}' skipped because it is identical to last one.", device.getFcmToken());
+//            return;
+//        }
 
         sendAndPersistNotification(notification);
         log.debug("Notification for fcmToken: '{}' sent.", device.getFcmToken());
